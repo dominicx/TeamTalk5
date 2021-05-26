@@ -1,6 +1,14 @@
 name: Ubuntu 18
 
-on: [push]
+#on: [push]
+on:
+  watch:
+    types: started
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    if: github.event.repository.owner.id == github.event.sender.id
 
 env:
   # TeamTalk unit test environment variables
